@@ -45,7 +45,7 @@ include("wavelets.jl")
 t=1:1000
 plot(t,x)                         # shows the sweep signal
 imshow(z)                         # shows the cwt of the signal
-plot(vec(z[30,:]))                # show parts of the cwt
+plot(vec(z[30,:]))                # shows parts of the cwt
 
 Please compare the calculation time between cwt and cwtf. 
 
