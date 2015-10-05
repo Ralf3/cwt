@@ -368,7 +368,7 @@ end
 function cwt(wname::ASCIIString,
              x::Array{Float64,1},
              height::Int64,width::Int64,
-             da::Float64=0)
+             da=0)
     # perform all checks
     if haskey(D,wname) == false
         return NaN
@@ -379,7 +379,7 @@ function cwt(wname::ASCIIString,
     end
     # calculate the paramters for iteration
     if da==0.0
-        da= floor(l/hight)
+        da= floor(l/height)
         da = da==0.0 ? 1.0 : da
     end
     db = floor(l/width)
@@ -409,7 +409,7 @@ end
 function cwtf(wname::ASCIIString,
              x::Array{Float64,1},
              height::Int64,width::Int64,
-             da::Float64=0)
+             da=0)
     # perform all checks
     if haskey(D,wname) == false
         return NaN
