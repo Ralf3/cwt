@@ -18,15 +18,15 @@ are the:
 
 basic implementation 
 cwt(wname::ASCIIString, x::Array{Float64,1}, hight::Int64,width::Int64,
-    da::Float64=0) ===> Array{Float64,2}, Array{Float64,1} 
+    a0=1.0,da=0) ===> Array{Float64,2}, Array{Float64,1} 
 
 and the fast implementation 
 cwtf(wname::ASCIIString, x::Array{Float64,1}, hight::Int64,width::Int64,
-da::Float64=0) ===> Array{Float64,2}, Array{Float64,1} 
+    a0=1.0,da=0) ===> Array{Float64,2}, Array{Float64,1} 
 
 The wavelet names (wname) can be find in the global dictionary D. The
 x is the input data and height, width are the describe the size of the
-output array.  The last parameter da is used to control the range of
+output array.  The last parameters a0 and da are used to control the range of
 the shape parameter a. 
 
 Some examples can be found in the testing part: 

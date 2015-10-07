@@ -368,7 +368,7 @@ end
 function cwt(wname::ASCIIString,
              x::Array{Float64,1},
              height::Int64,width::Int64,
-             da=0)
+             a0=1.0, da=0)
     # perform all checks
     if haskey(D,wname) == false
         return NaN
@@ -384,7 +384,6 @@ function cwt(wname::ASCIIString,
     end
     db = floor(l/width)
     db = db==0.0 ? 1.0 : db
-    a0=1.0
     b0=0.0
     println("da=",da," db=",db)
     f=D[wname].f
@@ -409,7 +408,7 @@ end
 function cwtf(wname::ASCIIString,
              x::Array{Float64,1},
              height::Int64,width::Int64,
-             da=0)
+             a0=1.0, da=0)
     # perform all checks
     if haskey(D,wname) == false
         return NaN
@@ -425,7 +424,6 @@ function cwtf(wname::ASCIIString,
     end
     db = floor(l/width)
     db = db==0.0 ? 1.0 : db
-    a0=1.0
     b0=0.0
     println("da=",da," db=",db)
     f=D[wname].f
@@ -464,7 +462,7 @@ function test(wname)
     y+=sin(5*t)
     y+=sin(7*t)
     y+=sin(9*t)
-    z=cwt(wname,y,250,250,2.0)
+    z=cwt(wname,y,250,250,1.0,2.0)
     return z,y
 end
 
@@ -475,18 +473,18 @@ function testr(wname)
     y[500:600]=1
     y[700:800]=1
     y[900:1000]=1
-    z=cwt(wname,y,250,250,2.0)
+    z=cwt(wname,y,250,250,1.0,2.0)
     return z,y
 end
 
 function testg10(wname)
     y = [GAUSS2real(t,50.0,500.0) for t=1.0:1000]
-    z=cwt(wname,y,250,250,2.0)
+    z=cwt(wname,y,250,250,1.0,2.0)
     return z,y
 end
 
 function testsweep(wname)
     sweep=[sin((1.-x/1001.0)^2*pi*20) for x=1:1000]
-    z=cwtf(wname,sweep,500,500,2.0)
+    z=cwtf(wname,sweep,500,500,1.0,2.0)
     return z,sweep
 end
